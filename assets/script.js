@@ -23,28 +23,34 @@ var temp = $("<div>").addClass("temp");
 var wind = $("<div>").addClass("temp");
 var humidity = $("<div>").addClass("temp");
 var UVindex = $("<div>").addClass("temp");
+var icon = $("<img>").addClass("temp01");
 
 var date00 = $("<div>").addClass("temp01");
+var icon00 = $("<img>").addClass("temp01");
 var temp00 = $("<div>").addClass("temp01");
 var wind00 = $("<div>").addClass("temp01");
 var humidity00 = $("<div>").addClass("temp01");
 
 var date01 = $("<div>").addClass("temp01");
+var icon01 = $("<img>").addClass("temp01");
 var temp01 = $("<div>").addClass("temp01");
 var wind01 = $("<div>").addClass("temp01");
 var humidity01 = $("<div>").addClass("temp01");
 
 var date02 = $("<div>").addClass("temp01");
+var icon02 = $("<img>").addClass("temp01");
 var temp02 = $("<div>").addClass("temp01");
 var wind02 = $("<div>").addClass("temp01");
 var humidity02 = $("<div>").addClass("temp01");
 
 var date03 = $("<div>").addClass("temp01");
+var icon03 = $("<img>").addClass("temp01");
 var temp03 = $("<div>").addClass("temp01");
 var wind03 = $("<div>").addClass("temp01");
 var humidity03 = $("<div>").addClass("temp01");
 
 var date04 = $("<div>").addClass("temp01");
+var icon04 = $("<img>").addClass("temp01");
 var temp04 = $("<div>").addClass("temp01");
 var wind04 = $("<div>").addClass("temp01");
 var humidity04 = $("<div>").addClass("temp01");
@@ -172,6 +178,7 @@ $(pastBtn06).on("click", function (event) {
 containerBody.append(weatherBox);
 weatherBox.append(weatherToday);
 
+
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=imperial&appid=781799523a4708dd72dc5b8f93768388")
     .then(function (response){
         return response.json();
@@ -179,6 +186,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=impe
     .then(function (data){
         console.log(data);
         console.log(data.name);
+
+
+
+
         weatherToday.append(cityName);
         cityName.text(data.city.name + " (" + today + ")" );
         cityName.append(temp);
@@ -189,29 +200,45 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=impe
         humidity.text("Humidity: " + data.list[0].main.humidity + " %");
         humidity.append(UVindex);
         UVindex.text("UV Index: " );
+        var iconCode = data.list[0].weather[0].icon;
+        var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        cityName.append(icon);
+        icon.attr('src', iconUrl);
+
 
         weatherBox.append(weatherForecast);
         weatherForecast.text("5 Day Forecast: ");
         weatherForecast.append(weatherForecastBody);
+        
+        
         weatherForecastBody.append(day00);
         day00.append(date00);
         date00.text(data.list[1].dt_txt);
+
         date00.append(temp00);
         temp00.text("Temp: " + data.list[1].main.temp + "°F");
         temp00.append(wind00);
         wind00.text("Wind: " + data.list[1].wind.speed + " mph");
         wind00.append(humidity00);
         humidity00.text("Humidity: " + data.list[1].main.humidity + " %");
+        var iconCode00 = data.list[1].weather[0].icon;
+        var iconUrl00 = "http://openweathermap.org/img/w/" + iconCode00 + ".png";
+        day00.append(icon00);
+        icon00.attr('src', iconUrl00);
 
         weatherForecastBody.append(day01);
         day01.append(date01);
-        date01.text(data.list[29].dt_txt);
+        date01.text(data.list[9].dt_txt);
         date01.append(temp01);
         temp01.text("Temp: " + data.list[9].main.temp + "°F");
         temp01.append(wind01);
         wind01.text("Wind: " + data.list[9].wind.speed + " mph");
         wind01.append(humidity01);
         humidity01.text("Humidity: " + data.list[9].main.humidity + " %");
+        var iconCode01 = data.list[9].weather[0].icon;
+        var iconUrl01 = "http://openweathermap.org/img/w/" + iconCode01 + ".png";
+        day01.append(icon01);
+        icon01.attr('src', iconUrl01);
 
         weatherForecastBody.append(day02);
         day02.append(date02);
@@ -222,6 +249,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=impe
         wind02.text("Wind: " + data.list[19].wind.speed + " mph");
         wind02.append(humidity02);
         humidity02.text("Humidity: " + data.list[19].main.humidity + " %");
+        var iconCode02 = data.list[19].weather[0].icon;
+        var iconUrl02 = "http://openweathermap.org/img/w/" + iconCode02 + ".png";
+        day02.append(icon02);
+        icon02.attr('src', iconUrl02);
 
         weatherForecastBody.append(day03);
         day03.append(date03);
@@ -232,6 +263,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=impe
         wind03.text("Wind: " + data.list[30].wind.speed + " mph");
         wind03.append(humidity03);
         humidity03.text("Humidity: " + data.list[30].main.humidity + " %");
+        var iconCode03 = data.list[30].weather[0].icon;
+        var iconUrl03 = "http://openweathermap.org/img/w/" + iconCode03 + ".png";
+        day03.append(icon03);
+        icon03.attr('src', iconUrl03);
 
         weatherForecastBody.append(day04);
         day04.append(date04);
@@ -242,6 +277,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=impe
         wind04.text("Wind: " + data.list[39].wind.speed + " mph");
         wind04.append(humidity04);
         humidity04.text("Humidity: " + data.list[39].main.humidity + " %");
+        var iconCode04 = data.list[39].weather[0].icon;
+        var iconUrl04 = "http://openweathermap.org/img/w/" + iconCode04 + ".png";
+        day04.append(icon04);
+        icon04.attr('src', iconUrl04);
 
 
 
