@@ -23,6 +23,8 @@ var temp = $("<div>").addClass("temp");
 var wind = $("<div>").addClass("temp");
 var humidity = $("<div>").addClass("temp");
 var UVindex = $("<div>").addClass("temp");
+var UVindexBox = $("<div>").addClass("UVIndex");
+
 var icon = $("<img>").addClass("temp01");
 
 var date00 = $("<div>").addClass("temp01");
@@ -173,8 +175,6 @@ $(pastBtn06).on("click", function (event) {
 });
 
 
-
-
 containerBody.append(weatherBox);
 weatherBox.append(weatherToday);
 
@@ -199,7 +199,9 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=impe
         wind.append(humidity);
         humidity.text("Humidity: " + data.list[0].main.humidity + " %");
         humidity.append(UVindex);
-        UVindex.text("UV Index: " );
+        UVindex.text("UV Index:  " );
+        UVindex.append(UVindexBox);
+        UVindexBox.text("1.00" );
         var iconCode = data.list[0].weather[0].icon;
         var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
         cityName.append(icon);

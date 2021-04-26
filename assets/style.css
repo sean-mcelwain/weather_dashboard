@@ -118,6 +118,19 @@ body {
   padding-top: 10px;
 }
 
+.UVIndex {
+  background-color: rgba(25, 189, 52, 0.637);
+  margin-top: 10px;
+  margin-left: 3px;
+
+  border-radius: 2px;
+  color: darkslategrey;
+  text-align: center;
+  padding: 3px;
+
+  display: inline;
+}
+
 .temp01{
   font-size: 13px;
   padding-top: 10px;
